@@ -40,7 +40,7 @@ svn co https://github.com/siropboy/mypackages/trunk/luci-app-autopoweroff ./pack
 svn co https://github.com/siropboy/mypackages/trunk/luci-app-advanced ./package/new/luci-app-advanced
 svn co https://github.com/siropboy/mypackages/trunk//luci-app-adguardhome ./package/new//luci-app-adguardhome
 svn co https://github.com/siropboy/mypackages/trunk/adguardhome ./package/new/adguardhome
-git clone -b master --single-branch https://github.com/vernesong/OpenClash/luci-app-openclash ./package/new/luci-app-openclash
+git clone -b master https://github.com/vernesong/OpenClash.git package/OpenClash
 # chmod 775 ./package/new/luci-app-autopoweroff/root/etc/init.d/a*
 # chmod 775 ./package/new/luci-app-koolddns/root/etc/init.d/k*
 # chmod 775  ./package/new/luci-app-koolddns/root/usr/share/koolddns/a*
