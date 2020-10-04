@@ -11,8 +11,8 @@ rm -rf ./package/lean/luci-app-netdata
 rm -rf ./package/lean/luci-theme-opentomcat
 rm -rf ./feeds/packages/net/miniupnpd
 rm -rf ./feeds/packages/net/mwan3
-#rm -rf ./feeds/diy/adguardhome
-#rm -rf ./feeds/diy/smartdns
+rm -rf ./feeds/diy/adguardhome
+rm -rf ./feeds/diy/smartdns
 rm -rf ./feeds/packages/admin/netdata
 rm -rf ./feeds/packages/net/smartdns
 curl -fsSL  https://raw.githubusercontent.com/siropboy/other/master/patch/poweroff/poweroff.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/poweroff.htm 
@@ -25,7 +25,7 @@ sed -i 's/Turbo ACC 网络加速/ACC网络加速/g' package/lean/luci-app-sfe/po
 sed -i 's/解锁网易云灰色歌曲/解锁灰色歌曲/g' package/lean/luci-app-unblockmusic/po/zh-cn/unblockmusic.po
 sed -i 's/家庭云//g' package/lean/luci-app-familycloud/luasrc/controller/familycloud.lua
 sed -i '/filter_/d' ./package/network/services/dnsmasq/files/dhcp.conf
-sed -i "s/bootstrap/opentopd/g" feeds/luci/modules/luci-base/root/etc/config/luci
+#sed -i "s/bootstrap/opentopd/g" feeds/luci/modules/luci-base/root/etc/config/luci
 sed -i 's/bootstrap/opentopd/g' feeds/luci/collections/luci/Makefile
 # sed -i 's/IMG_PREFIX:=/IMG_PREFIX:=$(BUILD_DATE_PREFIX)-ipv6-/g' include/image.mk
 sed -i 's/$(VERSION_DIST_SANITIZED)/$(shell date +%Y%m%d)-ipv6-mini-/g' include/image.mk
@@ -40,7 +40,7 @@ svn co https://github.com/siropboy/siropboy-package/trunk/netdata/ ./feeds/packa
 svn co https://github.com/siropboy/siropboy-package/trunk/luci-app-netdata/ ./package/lean/luci-app-netdata
 svn co https://github.com/siropboy/siropboy-package/trunk/miniupnpd/ ./feeds/packages/net/miniupnpd
 svn co https://github.com/siropboy/siropboy-package/trunk/mwan3/ ./feeds/packages/net/mwan3
-svn co https://github.com/siropboy/siropboy-package/trunk/smartdns ./package/new/smartdns
+svn co https://github.com/sirpdboy/sirpdboy-package/trunk/smartdns ./package/new/smartdns
 svn co https://github.com/siropboy/siropboy-package/trunk/adguardhome ./package/new/adguardhome
 svn co https://github.com/jerrykuku/luci-app-jd-dailybonus/trunk/ ./package/new/luci-app-jd-dailybonus
 git clone -b master --single-branch https://github.com/tty228/luci-app-serverchan ./package/new/luci-app-serverchan
