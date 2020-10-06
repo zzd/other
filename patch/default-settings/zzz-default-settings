@@ -5,6 +5,8 @@ set luci.themes.opentopd=/luci-static/opentopd
 set luci.main.mediaurlbase=/luci-static/opentopd
 uci commit luci
 
+uci set turboacc.config.sw_flow='0'
+uci commit turboacc
 
 uci set system.@system[0].timezone=CST-8
 uci set system.@system[0].zonename=Asia/Shanghai
