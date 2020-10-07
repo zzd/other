@@ -5,9 +5,6 @@ set luci.themes.opentopd=/luci-static/opentopd
 set luci.main.mediaurlbase=/luci-static/opentopd
 uci commit luci
 
-uci set turboacc.config.sw_flow='0'
-uci commit turboacc
-
 uci set system.@system[0].timezone=CST-8
 uci set system.@system[0].zonename=Asia/Shanghai
 uci commit system
@@ -20,6 +17,14 @@ uci set dhcp.lan.dhcpv6='server'
 uci set dhcp.lan.ra_management='1'
 uci set dhcp.lan.ra_default='1'
 uci commit dhcp
+
+uci set sfe.config.enabled=0
+uci set sfe.config.bbr=1
+uci commit sfe
+
+uci set flowoffload.@flow[0].flow_offloading=0
+uci set flowoffload.@flow[0].bbr=1
+uci commit flowoffload
 
 #rm -f /usr/lib/lua/luci/view/admin_status/index/mwan.htm
 #rm -f /usr/lib/lua/luci/view/admin_status/index/upnp.htm
