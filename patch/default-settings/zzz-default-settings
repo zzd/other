@@ -48,6 +48,15 @@ sed -i 's/\"system\"/\"control\"/g' /usr/lib/lua/luci/controller/autoreboot.lua
 sed -i 's/\"system\"/\"control\"/g' /usr/lib/lua/luci/controller/autopoweroff.lua
 sed -i 's/\"network\"/\"control\"/g' /usr/lib/lua/luci/controller/eqos.lua
 
+uci set minidlna.config.enabled=0
+uci commit minidlna
+/etc/init.d/minidlna enable
+/etc/init.d/minidlna stop
+
+uci set vsftpd.@listen[0].enable4=0
+uci commit vsftpd
+/etc/init.d/vsftpd stop
+
 ln -sf /sbin/ip /usr/bin/ip
 
 sed -i 's#http://downloads.openwrt.org#https://mirrors.cloud.tencent.com/lede#g' /etc/opkg/distfeeds.conf
@@ -75,6 +84,7 @@ sed -i '/log-facility/d' /etc/dnsmasq.conf
 echo "log-facility=/dev/null" >> /etc/dnsmasq.conf
 
 sed -i 's/cbi.submit\"] = true/cbi.submit\"] = \"1\"/g' /usr/lib/lua/luci/dispatcher.lua
+/etc/modules-boot.d && ln -s ../modules.d/18-phy-broadcom
 echo 'hsts=0' > /root/.wgetrc
 
 rm -rf /tmp/luci-modulecache/
