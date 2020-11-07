@@ -12,6 +12,7 @@ rm -rf ./package/lean/luci-theme-opentomcat
 rm -rf ./feeds/diy/adguardhome
 rm -rf ./feeds/diy/smartdns
 rm -rf ./feeds/diy/autocore
+rm -rf ./feeds/diy/default-settings
 #rm -rf ./package/lean/autocore
 #rm -rf ./package/lean/default-settings
 curl -fsSL https://raw.githubusercontent.com/siropboy/other/master/patch/autocore/files/x86/index.htm > package/lean/autocore/files/x86/index.htm
@@ -26,8 +27,7 @@ sed -i '/filter_/d' package/network/services/dnsmasq/files/dhcp.conf
 sed -i 's/$(VERSION_DIST_SANITIZED)/$(shell TZ=UTC-8 date +%Y%m%d)-ipv6/g' include/image.mk
 echo "DISTRIB_REVISION='S$(TZ=UTC-8 date +%Y.%m.%d) Sirpdboy '" > ./package/base-files/files/etc/openwrt_release1
 # svn co https://github.com/sirpdboy/sirpdboy-package/trunk/luci-app-netdata/ ./package/lean/luci-app-netdata
-# svn co https://github.com/sirpdboy/sirpdboy-package/trunk/smartdns ./package/new/smartdns
-# svn co https://github.com/sirpdboy/sirpdboy-package/trunk/adguardhome ./package/new/adguardhome
+#svn co https://github.com/sirpdboy/sirpdboy-package/trunk/adguardhome ./package/new/adguardhome
 # curl -fsSL https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-smartdns.conf >  ./package/new/smartdns/conf/anti-ad-smartdns.conf
 svn co https://github.com/jerrykuku/luci-app-jd-dailybonus/trunk/ ./package/new/luci-app-jd-dailybonus
 git clone -b master --single-branch https://github.com/tty228/luci-app-serverchan ./package/new/luci-app-serverchan
@@ -36,7 +36,9 @@ git clone -b master https://github.com/vernesong/OpenClash.git package/OpenClash
 git clone -b master --single-branch https://github.com/frainzy1477/luci-app-clash ./package/new/luci-app-clash
 sed -i 's/), 5)/), 49)/g' package/new/luci-app-clash/luasrc/controller/clash.lua
 sed -i 's/), 1)/), 49)/g' package/new/luci-app-clash/luasrc/controller/clash.lua
+svn co https://github.com/sirpdboy/sirpdboy-package/trunk/smartdns ./package/new/smartdns
 svn co https://github.com/jerrykuku/luci-app-vssr/trunk/  package/new/luci-app-vssr
+svn co https://github.com/siropboy/luci-app-vssr-plus/trunk/  package/new/luci-app-vssr-plus
 svn co https://github.com/xiaorouji/openwrt-package/trunk/lienol/luci-app-passwall package/luci-app-passwall
 svn co https://github.com/xiaorouji/openwrt-package/trunk/package package/lienol
 #sed -i 's/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=4.19/g' ./target/linux/x86/Makefile
