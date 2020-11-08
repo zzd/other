@@ -16,7 +16,7 @@ uci set dhcp.lan.dhcpv6='server'
 uci set dhcp.lan.ra_management='1'
 uci set dhcp.lan.ra_default='1'
 uci set dhcp.lan.force='1'
-uci set dhcp.@dnsmasq[0].dns_redirect='1'
+#uci set dhcp.@dnsmasq[0].dns_redirect='1'
 uci commit dhcp
 # uci set sfe.config.enabled=0
 # uci set sfe.config.bbr=1
@@ -25,7 +25,7 @@ uci set flowoffload.@flow[0].flow_offloading=0
 uci set flowoffload.@flow[0].bbr=1
 uci commit flowoffload
 #uci set network.wan.proto=pppoe
-uci set network.@globals[0].packet_steering=1
+#uci set network.@globals[0].packet_steering=1
 uci set network.wan.mtu=1460
 uci commit network
 #rm -f /usr/lib/lua/luci/view/admin_status/index/mwan.htm
