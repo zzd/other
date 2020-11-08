@@ -1,6 +1,6 @@
 #!/bin/sh
 
-uci set luci.main.lang=zh_cn
+uci set luci.main.lang=auto
 uci set luci.main.mediaurlbase=/luci-static/opentopd
 uci commit luci
 
@@ -16,6 +16,7 @@ uci set dhcp.lan.dhcpv6='server'
 uci set dhcp.lan.ra_management='1'
 uci set dhcp.lan.ra_default='1'
 uci set dhcp.lan.force='1'
+uci set dhcp.@dnsmasq[0].dns_redirect='1'
 uci commit dhcp
 # uci set sfe.config.enabled=0
 # uci set sfe.config.bbr=1
@@ -24,6 +25,7 @@ uci set flowoffload.@flow[0].flow_offloading=0
 uci set flowoffload.@flow[0].bbr=1
 uci commit flowoffload
 #uci set network.wan.proto=pppoe
+uci set network.@globals[0].packet_steering=1
 uci set network.wan.mtu=1460
 uci commit network
 #rm -f /usr/lib/lua/luci/view/admin_status/index/mwan.htm
@@ -70,6 +72,8 @@ sed -i '/openwrt_luci/ { s/snapshots/releases\/18.06.8/g; }'  /etc/opkg/distfeed
 sed -i '/REDIRECT --to-ports 53/d' /etc/firewall.user
 echo "iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 53" >> /etc/firewall.user
 echo "iptables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-ports 53" >> /etc/firewall.user
+echo "ip6tables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 53" >> /etc/firewall.user
+echo "ip6tables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-ports 53" >> /etc/firewall.user
 
 sed -i '/option disabled/d' /etc/config/wireless
 sed -i '/set wireless.radio${devidx}.disabled/d' /lib/wifi/mac80211.sh
@@ -87,6 +91,5 @@ sed -i 's/cbi.submit\"] = true/cbi.submit\"] = \"1\"/g' /usr/lib/lua/luci/dispat
 /etc/modules-boot.d && ln -s ../modules.d/18-phy-broadcom
 echo 'hsts=0' > /root/.wgetrc
 
-rm -rf /tmp/luci-modulecache/
-rm -f /tmp/luci-indexcache
+rm -rf /tmp/luci-*
 exit 0
