@@ -9,7 +9,7 @@ rm -rf ./package/lean/v2ray
 rm -rf ./package/lean/v2ray-plugin
 rm -rf ./package/lean/luci-app-netdata
 rm -rf ./package/lean/luci-theme-opentomcat
-rm -rf ./feeds/diy/adguardhome
+#rm -rf ./feeds/diy/AdGuardHome
 rm -rf ./feeds/diy/smartdns
 rm -rf ./feeds/diy/autocore
 rm -rf ./feeds/diy/default-settings
@@ -31,7 +31,7 @@ curl -fsSL https://raw.githubusercontent.com/siropboy/other/master/patch/https-d
 curl -fsSL https://raw.githubusercontent.com/siropboy/other/master/patch/https-dns-proxy/files/https-dns-proxy.init > ./feeds/packages/net/https-dns-proxy/files/https-dns-proxy.init
 # svn co https://github.com/sirpdboy/sirpdboy-package/trunk/luci-app-netdata/ ./package/lean/luci-app-netdata
 # svn co https://github.com/sirpdboy/sirpdboy-package/trunk/smartdns ./package/new/smartdns
-# svn co https://github.com/sirpdboy/sirpdboy-package/trunk/adguardhome ./package/new/adguardhome
+svn co https://github.com/sirpdboy/sirpdboy-package/trunk/AdGuardHome ./package/new/AdGuardHome
 # curl -fsSL https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-smartdns.conf >  ./package/new/smartdns/conf/anti-ad-smartdns.conf
 #svn co https://github.com/jerrykuku/luci-app-jd-dailybonus/trunk/ ./package/new/luci-app-jd-dailybonus
 #git clone -b master --single-branch https://github.com/tty228/luci-app-serverchan ./package/new/luci-app-serverchan
