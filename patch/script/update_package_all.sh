@@ -33,7 +33,7 @@ svn co https://github.com/jerrykuku/luci-app-jd-dailybonus/trunk/ ./package/new/
 git clone -b master --single-branch https://github.com/tty228/luci-app-serverchan ./package/new/luci-app-serverchan
 curl -fsSL  https://raw.githubusercontent.com/siropboy/other/master/patch/etc/serverchan > ./package/new/luci-app-serverchan/root/etc/config/serverchan
 git clone -b master --single-branch https://github.com/destan19/OpenAppFilter ./package/new/OpenAppFilter
-git clone -b master https://github.com/vernesong/OpenClash.git package/OpenClash
+# git clone -b master https://github.com/vernesong/OpenClash.git package/OpenClash
 git clone -b master --single-branch https://github.com/frainzy1477/luci-app-clash ./package/new/luci-app-clash
 sed -i 's/), 5)/), 49)/g' package/new/luci-app-clash/luasrc/controller/clash.lua
 sed -i 's/), 1)/), 49)/g' package/new/luci-app-clash/luasrc/controller/clash.lua
@@ -46,5 +46,5 @@ svn co https://github.com/xiaorouji/openwrt-package/trunk/package package/lienol
 #sed -i 's/KERNEL_TESTING_PATCHVER:=5.4/KERNEL_TESTING_PATCHVER:=4.19/g' ./target/linux/x86/Makefile
 sed -i "/mediaurlbase/d" package/*/luci-theme*/root/etc/uci-defaults/*
 sed -i "/mediaurlbase/d" feed/*/luci-theme*/root/etc/uci-defaults/*
-
+svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-openclash package/new/luci-app-openclash
 ./scripts/feeds update -i
