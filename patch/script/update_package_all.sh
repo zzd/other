@@ -44,4 +44,7 @@ svn co https://github.com/xiaorouji/openwrt-package/trunk/lienol/luci-app-passwa
 svn co https://github.com/xiaorouji/openwrt-package/trunk/package package/lienol
 #sed -i 's/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=4.19/g' ./target/linux/x86/Makefile
 #sed -i 's/KERNEL_TESTING_PATCHVER:=5.4/KERNEL_TESTING_PATCHVER:=4.19/g' ./target/linux/x86/Makefile
+sed -i "/mediaurlbase/d" package/*/luci-theme*/root/etc/uci-defaults/*
+sed -i "/mediaurlbase/d" feed/*/luci-theme*/root/etc/uci-defaults/*
+
 ./scripts/feeds update -i
