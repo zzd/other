@@ -26,6 +26,9 @@ sed -i 's/家庭云//g' package/lean/luci-app-familycloud/luasrc/controller/fami
 sed -i '/filter_/d' package/network/services/dnsmasq/files/dhcp.conf
 sed -i 's/$(VERSION_DIST_SANITIZED)/$(shell TZ=UTC-8 date +%Y%m%d)-mini/g' include/image.mk
 echo "DISTRIB_REVISION='S$(TZ=UTC-8 date +%Y.%m.%d) Sirpdboy-mini '" > ./package/base-files/files/etc/openwrt_release1
+sed -i 's/带宽监控/监控/g' feeds/luci/applications/luci-app-nlbwmon/po/zh-cn/nlbwmon.po
+curl -fsSL https://raw.githubusercontent.com/siropboy/other/master/patch/https-dns-proxy/files/https-dns-proxy.config > ./feeds/packages/net/https-dns-proxy/files/https-dns-proxy.config
+curl -fsSL https://raw.githubusercontent.com/siropboy/other/master/patch/https-dns-proxy/files/https-dns-proxy.init > ./feeds/packages/net/https-dns-proxy/files/https-dns-proxy.init
 # svn co https://github.com/sirpdboy/sirpdboy-package/trunk/luci-app-netdata/ ./package/lean/luci-app-netdata
 # svn co https://github.com/sirpdboy/sirpdboy-package/trunk/smartdns ./package/new/smartdns
 # svn co https://github.com/sirpdboy/sirpdboy-package/trunk/adguardhome ./package/new/adguardhome
@@ -47,6 +50,4 @@ svn co https://github.com/xiaorouji/openwrt-package/trunk/package package/lienol
 sed -i "/mediaurlbase/d" package/*/luci-theme*/root/etc/uci-defaults/*
 sed -i "/mediaurlbase/d" feed/*/luci-theme*/root/etc/uci-defaults/*
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-openclash package/new/luci-app-openclash
-./scripts/feeds update -i
-
 ./scripts/feeds update -i
