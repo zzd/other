@@ -12,20 +12,24 @@ rm -rf ./package/lean/luci-app-netdata &&svn co https://github.com/siropboy/siro
 rm -rf ./feeds/packages/admin/netdata &&svn co https://github.com/siropboy/siropboy-package/trunk/netdata ./feeds/packages/admin/netdata
 rm -rf ./feeds/packages/net/mwan3 &&svn co https://github.com/siropboy/siropboy-package/trunk/mwan3 ./feeds/packages/net/mwan3
 rm -rf ./feeds/packages/net/https-dns-proxy &&svn co https://github.com/Lienol/openwrt-packages/trunk/net/https-dns-proxy feeds/packages/net/https-dns-proxy
-#rm -rf ./feeds/diy/autocore
-#rm -rf ./feeds/diy/default-settings
+rm -rf ./package/diy/autocore
+rm -rf ./package/diy/netdata
+rm -rf ./package/diy/mwan3
+rm -rf ./package/diy/default-settings
 #rm -rf ./package/lean/autocore
 #rm -rf ./package/lean/default-settings
 curl -fsSL https://raw.githubusercontent.com/siropboy/other/master/patch/autocore/files/x86/index.htm > package/lean/autocore/files/x86/index.htm
 curl -fsSL https://raw.githubusercontent.com/siropboy/other/master/patch/autocore/files/arm/index.htm > package/lean/autocore/files/arm/index.htm
 curl -fsSL  https://raw.githubusercontent.com/siropboy/other/master/patch/default-settings/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
+curl -fsSL  https://raw.githubusercontent.com/siropboy/other/master/patch/poweroff/poweroff.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/poweroff.htm 
+curl -fsSL  https://raw.githubusercontent.com/siropboy/other/master/patch/poweroff/system.lua > ./feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/system.lua
 sed -i 's/网络存储/存储/g' package/lean/luci-app-vsftpd/po/zh-cn/vsftpd.po
 sed -i 's/Turbo ACC 网络加速/ACC网络加速/g' package/lean/luci-app-flowoffload/po/zh-cn/flowoffload.po
 sed -i 's/Turbo ACC 网络加速/ACC网络加速/g' package/lean/luci-app-sfe/po/zh-cn/sfe.po
 sed -i 's/解锁网易云灰色歌曲/解锁灰色歌曲/g' package/lean/luci-app-unblockmusic/po/zh-cn/unblockmusic.po
 sed -i 's/家庭云//g' package/lean/luci-app-familycloud/luasrc/controller/familycloud.lua
-sed -i 's/$(VERSION_DIST_SANITIZED)/$(shell TZ=UTC-8 date +%Y%m%d)-Ipv6-Mini/g' include/image.mk
-echo "DISTRIB_REVISION='S$(TZ=UTC-8 date +%Y.%m.%d) Sirpdboy Ipv6-Mini'" > ./package/base-files/files/etc/openwrt_release1
+sed -i 's/$(VERSION_DIST_SANITIZED)/$(shell TZ=UTC-8 date +%Y%m%d)-Ipv4-Mini/g' include/image.mk
+echo "DISTRIB_REVISION='S$(TZ=UTC-8 date +%Y.%m.%d) Sirpdboy Ipv4-Mini '" > ./package/base-files/files/etc/openwrt_release1
 sed -i 's/带宽监控/监控/g' feeds/luci/applications/luci-app-nlbwmon/po/zh-cn/nlbwmon.po
 sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' ./package/base-files/files/etc/shadow
 
@@ -41,7 +45,7 @@ sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999
 #sed -i 's/), 5)/), 49)/g' package/new/luci-app-clash/luasrc/controller/clash.lua
 #sed -i 's/), 1)/), 49)/g' package/new/luci-app-clash/luasrc/controller/clash.lua
 #svn co https://github.com/sirpdboy/sirpdboy-package/trunk/smartdns ./package/new/smartdns
-# svn co https://github.com/jerrykuku/luci-app-vssr/trunk/  package/new/luci-app-vssr
+svn co https://github.com/jerrykuku/luci-app-vssr/trunk/  package/new/luci-app-vssr
 # svn co https://github.com/siropboy/luci-app-vssr-plustrunk/luci-app-vssr-plus package/new/luci-app-vssr-plus
 svn co https://github.com/xiaorouji/openwrt-package/trunk/lienol/luci-app-passwall package/luci-app-passwall
 svn co https://github.com/xiaorouji/openwrt-package/trunk/package package/lienol
@@ -49,5 +53,5 @@ svn co https://github.com/xiaorouji/openwrt-package/trunk/package package/lienol
 #sed -i 's/KERNEL_TESTING_PATCHVER:=5.4/KERNEL_TESTING_PATCHVER:=4.19/g' ./target/linux/x86/Makefile
 #sed -i "/mediaurlbase/d" package/*/luci-theme*/root/etc/uci-defaults/*
 #sed -i "/mediaurlbase/d" feed/*/luci-theme*/root/etc/uci-defaults/*
-# svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-openclash package/new/luci-app-openclash
+svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-openclash package/new/luci-app-openclash
 ./scripts/feeds update -i
