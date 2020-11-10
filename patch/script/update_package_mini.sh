@@ -8,9 +8,10 @@ rm -rf ./package/lean/trojan
 rm -rf ./package/lean/v2ray
 rm -rf ./package/lean/v2ray-plugin
 rm -rf ./package/lean/luci-theme-opentomcat
-rm -rf ./package/lean/luci-app-netdata &&svn co https://github.com/siropboy/siropboy-package/trunk/luci-app-netdata ./package/lean/luci-app-netdata
-rm -rf ./feeds/packages/admin/netdata &&svn co https://github.com/siropboy/siropboy-package/trunk/netdata ./feeds/packages/admin/netdata
-rm -rf ./feeds/packages/net/mwan3 &&svn co https://github.com/siropboy/siropboy-package/trunk/mwan3 ./feeds/packages/net/mwan3
+rm -rf ./feeds/packages/net/smartdns && svn co https://github.com/sirpdboy/sirpdboy-package/trunk/smartdns ./feeds/packages/net/smartdns
+rm -rf ./package/lean/luci-app-netdata &&svn co https://github.com/sirpdboy/sirpdboy-package/trunk/luci-app-netdata ./package/lean/luci-app-netdata
+rm -rf ./feeds/packages/admin/netdata &&svn co https://github.com/sirpdboy/sirpdboy-package/trunk/netdata ./feeds/packages/admin/netdata
+rm -rf ./feeds/packages/net/mwan3 &&svn co https://github.com/sirpdboy/sirpdboy-package/trunk/mwan3 ./feeds/packages/net/mwan3
 rm -rf ./feeds/packages/net/https-dns-proxy &&svn co https://github.com/Lienol/openwrt-packages/trunk/net/https-dns-proxy feeds/packages/net/https-dns-proxy
 rm -rf ./package/diy/autocore
 rm -rf ./package/diy/netdata
@@ -35,7 +36,6 @@ sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999
 
 #svn co https://github.com/sirpdboy/sirpdboy-package/trunk/AdGuardHome ./package/new/AdGuardHome
 # curl -fsSL https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-smartdns.conf >  ./package/new/smartdns/conf/anti-ad-smartdns.conf
-
 # svn co https://github.com/jerrykuku/luci-app-jd-dailybonus/trunk/ ./package/new/luci-app-jd-dailybonus
 # git clone -b master --single-branch https://github.com/tty228/luci-app-serverchan ./package/new/luci-app-serverchan
 # curl -fsSL  https://raw.githubusercontent.com/siropboy/other/master/patch/etc/serverchan > ./package/new/luci-app-serverchan/root/etc/config/serverchan
