@@ -8,18 +8,15 @@ uci set system.@system[0].timezone=CST-8
 uci set system.@system[0].zonename=Asia/Shanghai
 uci commit system
 
-#uci set fstab.@global[0].auto_mount=0
-#uci commit fstab
-if [ $(uci get network.wan.ipv6) == 0 ]; then
-			uci set dhcp.@dnsmasq[0].filter_aaaa='1'
-else
-    uci set dhcp.lan.ra='server'
-    uci set dhcp.lan.dhcpv6='server'
-    uci set dhcp.lan.ra_management='1'
-    uci set dhcp.lan.ra_default='1'
-    uci set dhcp.lan.force='1'
-    uci set dhcp.dnsmasq[0].filter_aaaa='0'
-fi
+uci set fstab.@global[0].anon_mount=0
+uci commit fstab
+
+uci set dhcp.lan.ra='server'
+uci set dhcp.lan.dhcpv6='server'
+uci set dhcp.lan.ra_management='1'
+ci set dhcp.lan.ra_default='1'
+uci set dhcp.lan.force='1'
+uci set dhcp.dnsmasq[0].filter_aaaa='0'
 uci set dhcp.dnsmasq[0].cachesize='10000'
 uci commit dhcp
 if [ ! -f /etc/config/sfe ]; then
@@ -39,7 +36,6 @@ uci commit network
 #rm -f /usr/lib/lua/luci/view/admin_status/index/upnp.htm
 rm -f /usr/lib/lua/luci/view/admin_status/index/ddns.htm
 rm -f /usr/lib/lua/luci/view/admin_status/index/minidlna.htm
-#sed -i '/S99opkg/d' /etc/crontabs/root
 sed -i '/coremark/d' /etc/crontabs/root
 sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/aria2.lua
 sed -i 's/services/nas/g' /usr/lib/lua/luci/view/aria2/overview_status.htm
