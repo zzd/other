@@ -21,7 +21,7 @@ uci set dhcp.dnsmasq[0].cachesize='10000'
 uci commit dhcp
 if [ ! -f /etc/config/sfe ]; then
   uci set sfe.config.enabled=0
-  uci set sfe.config.bbr=0
+  uci set sfe.config.bbr=1
   uci commit sfe
 fi
 if [ ! -f /etc/config/flowoffload ]; then
