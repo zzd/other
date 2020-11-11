@@ -8,7 +8,7 @@ uci set system.@system[0].timezone=CST-8
 uci set system.@system[0].zonename=Asia/Shanghai
 uci commit system
 
-uci set fstab.@global[0].anon_mount=0
+uci set fstab.@global[0].anon_mount=1
 uci commit fstab
 
 uci set dhcp.lan.ra='server'
