@@ -14,7 +14,7 @@ uci commit fstab
 uci set dhcp.lan.ra='server'
 uci set dhcp.lan.dhcpv6='server'
 uci set dhcp.lan.ra_management='1'
-ci set dhcp.lan.ra_default='1'
+uci set dhcp.lan.ra_default='1'
 uci set dhcp.lan.force='1'
 uci set dhcp.dnsmasq[0].filter_aaaa='0'
 uci set dhcp.dnsmasq[0].cachesize='10000'
